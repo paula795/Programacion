@@ -2,8 +2,8 @@ package main
 
 import "fmt"
 
-func averageGrade(suma int, estudiantes int) int {
-	promedio := suma / int(estudiantes)
+func averageGrade(suma int, estudiantes int) float64 {
+	promedio := float64(suma) / float64(estudiantes)
 	return promedio
 }
 
@@ -16,7 +16,7 @@ func promedioEstudiantes() {
 	fmt.Scan(&estudiantes)
 
 	for i := 0; i < estudiantes; i++ {
-		fmt.Printf("Ingrese la nota del estudiante %d: ", i+1)
+		fmt.Printf("Ingrese la nota del estudiante %d (0-100): ", i+1)
 		fmt.Scan(&nota)
 
 		for nota < 0 || nota > 100 {
@@ -48,4 +48,86 @@ func promedioEstudiantes() {
 	default:
 		fmt.Println("Needs improvement")
 	}
+}
+
+func sumarNumeros() {
+	var numero int
+	var suma int
+
+	fmt.Print("Ingrese el valor de n: ")
+	fmt.Scan(&numero)
+
+	for i := 1; i <= numero; i++ {
+		suma = suma + i
+	}
+
+	fmt.Println("La suma es:", suma)
+}
+
+func celsiusAFahrenheit() {
+	var celsius float64
+
+	fmt.Print("Ingrese la temperatura en Celsius: ")
+	fmt.Scan(&celsius)
+
+	fahrenheit := (celsius * 9 / 5) + 32
+
+	fmt.Println("La temperatura en Fahrenheit es:", fahrenheit)
+}
+
+func fahrenheitACelsius() {
+	var fahrenheit float64
+
+	fmt.Print("Ingrese la temperatura en Fahrenheit: ")
+	fmt.Scan(&fahrenheit)
+
+	celsius := (fahrenheit - 32) * 5 / 9
+
+	fmt.Println("La temperatura en Celsius es:", celsius)
+}
+
+func menu() {
+	var opcion string
+
+	for {
+		fmt.Println()
+		fmt.Println("===== MENÚ =====")
+		fmt.Println("1. Promedio de estudiantes")
+		fmt.Println("2. Suma de 1 hasta n")
+		fmt.Println("3. Celsius a Fahrenheit")
+		fmt.Println("4. Fahrenheit a Celsius")
+		fmt.Println("0. Salir")
+
+		fmt.Print("Elija una opción: ")
+		fmt.Scan(&opcion)
+
+		switch opcion {
+		case "1":
+			promedioEstudiantes()
+
+		case "2":
+			sumarNumeros()
+
+		case "3":
+			celsiusAFahrenheit()
+
+		case "4":
+			fahrenheitACelsius()
+
+		case "0":
+			fmt.Println("Programa terminado.")
+			return
+
+		case "salir":
+			fmt.Println("Programa terminado.")
+			return
+
+		default:
+			fmt.Println("Opción no válida.")
+		}
+	}
+}
+
+func main() {
+	menu()
 }
