@@ -2,15 +2,15 @@ package main
 
 import "fmt"
 
-func averageGrade(suma float64, estudiantes int) float64 {
-	promedio := suma / float64(estudiantes)
+func averageGrade(suma int, estudiantes int) int {
+	promedio := suma / int(estudiantes)
 	return promedio
 }
 
 func promedioEstudiantes() {
 	var estudiantes int
-	var nota float64
-	var suma float64
+	var nota int
+	var suma int
 
 	fmt.Print("Ingrese la cantidad de estudiantes: ")
 	fmt.Scan(&estudiantes)
@@ -48,86 +48,4 @@ func promedioEstudiantes() {
 	default:
 		fmt.Println("Needs improvement")
 	}
-}
-
-func sumarNumeros() {
-	var n int
-	var suma int
-
-	fmt.Print("Ingrese el valor de n: ")
-	fmt.Scan(&n)
-
-	for i := 1; i <= n; i++ {
-		suma = suma + i
-	}
-
-	fmt.Println("La suma es:", suma)
-}
-
-func celsiusAFahrenheit() {
-	var celsius float64
-
-	fmt.Print("Ingrese la temperatura en Celsius: ")
-	fmt.Scan(&celsius)
-
-	fahrenheit := (celsius * 9 / 5) + 32
-
-	fmt.Println("La temperatura en Fahrenheit es:", fahrenheit)
-}
-
-func fahrenheitACelsius() {
-	var fahrenheit float64
-
-	fmt.Print("Ingrese la temperatura en Fahrenheit: ")
-	fmt.Scan(&fahrenheit)
-
-	celsius := (fahrenheit - 32) * 5 / 9
-
-	fmt.Println("La temperatura en Celsius es:", celsius)
-}
-
-func menu() {
-	var opcion string
-
-	for {
-		fmt.Println()
-		fmt.Println("===== MENÚ =====")
-		fmt.Println("1. Promedio de estudiantes")
-		fmt.Println("2. Suma de 1 hasta n")
-		fmt.Println("3. Celsius a Fahrenheit")
-		fmt.Println("4. Fahrenheit a Celsius")
-		fmt.Println("0. Salir")
-
-		fmt.Print("Elija una opción: ")
-		fmt.Scan(&opcion)
-
-		switch opcion {
-		case "1":
-			promedioEstudiantes()
-
-		case "2":
-			sumarNumeros()
-
-		case "3":
-			celsiusAFahrenheit()
-
-		case "4":
-			fahrenheitACelsius()
-
-		case "0":
-			fmt.Println("Programa terminado.")
-			return
-
-		case "salir":
-			fmt.Println("Programa terminado.")
-			return
-
-		default:
-			fmt.Println("Opción no válida.")
-		}
-	}
-}
-
-func main() {
-	menu()
 }
