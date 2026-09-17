@@ -7,7 +7,7 @@ func menu() {
 
 	for {
 		fmt.Println()
-		fmt.Println("===== MENÚ =====")
+		fmt.Println(" Menú de opciones a escoger")
 		fmt.Println("1. Promedio de estudiantes")
 		fmt.Println("2. Suma de 1 hasta n")
 		fmt.Println("3. Celsius a Fahrenheit")
