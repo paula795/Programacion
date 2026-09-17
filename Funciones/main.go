@@ -25,6 +25,15 @@ func suma(a int, b int) int {
 
 // funcion que se llame suma resta solicitar dos numeros y retornar dos valores, resultado de la suma
 // y resta
-func sumaResta(a, b int) (int, int) {
-	return a + b, a - b
+func sumaResta(num1, num2 int) (int, int) {
+	if num2 > num1 {
+		ResSuma := num1 + num2
+		ResResta := num1 - num2
+		return ResSuma, ResResta
+	} else {
+		ResSuma := num1 + num2
+		ResResta := 0
+		return ResSuma, ResResta
+	}
+
 }
