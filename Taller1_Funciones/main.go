@@ -7,7 +7,7 @@ func menu() {
 
 	for {
 		fmt.Println()
-		fmt.Println(" Menú de opciones a escoger")
+		fmt.Println("Menú de opciones a escoger")
 		fmt.Println("1. Promedio de estudiantes")
 		fmt.Println("2. Suma de 1 hasta n")
 		fmt.Println("3. Celsius a Fahrenheit")
@@ -58,14 +58,8 @@ func promedioEstudiantes() {
 	fmt.Scan(&estudiantes)
 
 	for i := 0; i < estudiantes; i++ {
-		fmt.Printf("Ingrese la nota del estudiante %d (0-100): ", i+1)
+		fmt.Printf("Ingrese la nota del estudiante %d: ", i+1)
 		fmt.Scan(&nota)
-
-		for nota < 0 || nota > 100 {
-			fmt.Println("La nota debe estar entre 0 y 100.")
-			fmt.Printf("Ingrese nuevamente la nota del estudiante %d: ", i+1)
-			fmt.Scan(&nota)
-		}
 
 		suma = suma + nota
 	}
