@@ -45,5 +45,6 @@ func promedioEstudiantes() {
 		fmt.Println("Good performance")
 	case promedio >= 70:
 		fmt.Println("Satisfactory performance")
-	default:4
-		fmt.Println("Needs improvem¿}
+	default:
+		fmt.Println("Needs improvement")
+	}
