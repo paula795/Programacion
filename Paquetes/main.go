@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"practica/saludo"
+)
 
 func main() {
 	fmt.Println("Bienvenidos a la clase de Paquetes ")
