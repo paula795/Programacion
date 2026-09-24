@@ -1,6 +1,6 @@
 package operaciones
 
-func suma(a, b int) int {
+func Suma(a, b int) int {
 	return a + b
 }
 
