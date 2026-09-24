@@ -1,5 +1,5 @@
 package saludo
 
-func salusar(nombre string) string {
+func Saludar(nombre string) string {
 	return "Bienvenido" + nombre
 }
