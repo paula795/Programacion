@@ -21,13 +21,13 @@ func main() {
 	fmt.Print("Ingrese el valor en dólares: ")
 	fmt.Fscan(lector, &dolares)
 
-	fmt.Println("Monedas disponibles:")
+	fmt.Println("Monedas a las que es disponible convertir:")
 	fmt.Println("euros")
 	fmt.Println("lb")
 	fmt.Println("won")
 	fmt.Println("btc")
 
-	fmt.Print("Ingrese la moneda: ")
+	fmt.Print("Ingrese la moneda correspondiente: ")
 	fmt.Fscan(lector, &moneda)
 
 	resultado := Conversor_monedas.Convertir(dolares, moneda)
