@@ -2,8 +2,8 @@ package main
 
 import (
 	"fmt"
-	"pactica1/saludo"
 	"practica/operaciones"
+	"practica/saludo"
 )
 
 func main() {
