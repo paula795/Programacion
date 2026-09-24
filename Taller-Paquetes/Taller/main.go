@@ -1,7 +1,9 @@
 package main
 
 import (
+	"bufio"
 	"fmt"
+	"os"
 
 	"Taller/Contador_voales"
 	"Taller/Conversor_monedas"
@@ -9,13 +11,15 @@ import (
 
 func main() {
 
+	lector := bufio.NewReader(os.Stdin)
+
 	var dolares float64
 	var moneda string
 
 	fmt.Println("Conversor de monedas")
 
 	fmt.Print("Ingrese el valor en dólares: ")
-	fmt.Scan(&dolares)
+	fmt.Fscan(lector, &dolares)
 
 	fmt.Println("Monedas disponibles:")
 	fmt.Println("euros")
@@ -24,7 +28,7 @@ func main() {
 	fmt.Println("btc")
 
 	fmt.Print("Ingrese la moneda: ")
-	fmt.Scan(&moneda)
+	fmt.Fscan(lector, &moneda)
 
 	resultado := Conversor_monedas.Convertir(dolares, moneda)
 
@@ -35,7 +39,9 @@ func main() {
 	fmt.Println("Contador de vocales")
 
 	fmt.Print("Ingrese una frase: ")
-	fmt.Scan(&frase)
+
+	lector.ReadString('\n')
+	frase, _ = lector.ReadString('\n')
 
 	a, e, i, o, u := Contador_voales.ContarVocales(frase)
 

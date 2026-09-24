@@ -12,21 +12,20 @@ func ContarVocales(frase string) (int, int, int, int, int) {
 
 		switch letra {
 
-		case 'a', 'A':
+		case 'a', 'A', 'á', 'Á':
 			a++
 
-		case 'e', 'E':
+		case 'e', 'E', 'é', 'É':
 			e++
 
-		case 'i', 'I':
+		case 'i', 'I', 'í', 'Í':
 			i++
 
-		case 'o', 'O':
+		case 'o', 'O', 'ó', 'Ó':
 			o++
 
-		case 'u', 'U':
+		case 'u', 'U', 'ú', 'Ú', 'ü', 'Ü':
 			u++
-
 		}
 	}
 
