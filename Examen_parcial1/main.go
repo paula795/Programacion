@@ -2,30 +2,25 @@ package main
 
 import "fmt"
 
-type Venta struct {
-	producto string
-	cantidad int
-	total    float64
-}
-
-var historial []Venta
+var productosVendidos [100]string
+var cantidadesVendidas [100]int
+var totalesVentas [100]float64
+var contadorVentas int
 
 func agregarVenta(producto string, precio float64, unidades int) {
-	nuevaVenta := Venta{
-		producto: producto,
-		cantidad: unidades,
-		total:    precio * float64(unidades),
-	}
+	productosVendidos[contadorVentas] = producto
+	cantidadesVendidas[contadorVentas] = unidades
+	totalesVentas[contadorVentas] = precio * float64(unidades)
 
-	historial = append(historial, nuevaVenta)
+	contadorVentas++
 
 	fmt.Printf("\nSe registró la venta de %d unidad(es) de %s.\n",
 		unidades, producto)
-	fmt.Printf("Valor de la venta: $%.2f\n", nuevaVenta.total)
+	fmt.Printf("Valor de la venta: $%.2f\n", precio*float64(unidades))
 }
 
 func verResumen() {
-	if len(historial) == 0 {
+	if contadorVentas == 0 {
 		fmt.Println("\nTodavía no se han realizado ventas.")
 		return
 	}
@@ -34,12 +29,12 @@ func verResumen() {
 
 	fmt.Println("MENÚ")
 
-	for _, venta := range historial {
-		recaudacion += venta.total
+	for i := 0; i < contadorVentas; i++ {
+		recaudacion += totalesVentas[i]
 	}
 
 	fmt.Printf("Dinero recaudado: $%.2f\n", recaudacion)
-	fmt.Printf("Ventas realizadas: %d\n", len(historial))
+	fmt.Printf("Ventas realizadas: %d\n", contadorVentas)
 }
 
 func main() {
@@ -97,6 +92,9 @@ func main() {
 
 		case 3:
 			fmt.Println("Gracias. El sistema ha finalizado.")
+
+		default:
+			fmt.Println("Ingrese una opción:")
 		}
 	}
 }
