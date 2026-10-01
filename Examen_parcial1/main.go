@@ -97,9 +97,6 @@ func main() {
 
 		case 3:
 			fmt.Println("Gracias. El sistema ha finalizado.")
-
-		default:
-			fmt.Println("Ingrese una opción:")
 		}
 	}
 }
