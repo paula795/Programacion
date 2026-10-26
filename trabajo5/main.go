@@ -22,16 +22,14 @@ func (p *Producto) ActualizarCantidad(cantidad int) {
 }
 
 func (p Producto) MostrarInfo() {
-	fmt.Println("ID:", p.ID, "| Nombre:", p.Nombre,
-		"| Precio:", p.Precio, "| Cantidad:", p.Cantidad)
+	fmt.Println("ID:", p.ID)
+	fmt.Println("Nombre:", p.Nombre)
+	fmt.Println("Precio:", p.Precio)
+	fmt.Println("Cantidad:", p.Cantidad)
 }
 
 type Inventario struct {
 	Productos map[int]Producto
-}
-
-func NuevoInventario() Inventario {
-	return Inventario{make(map[int]Producto)}
 }
 
 func (i *Inventario) AgregarProducto(p Producto) {
@@ -50,56 +48,53 @@ func (i Inventario) BuscarProducto(id int) (Producto, bool) {
 func (i Inventario) ListarProductos() {
 	for _, p := range i.Productos {
 		p.MostrarInfo()
+		fmt.Println("-------------")
 	}
 }
 
 func main() {
-	inventario := NuevoInventario()
-	var opcion, id, cantidad int
-	var nombre string
-	var precio float64
+	inventario := Inventario{
+		Productos: make(map[int]Producto),
+	}
+
+	opcion := -1
 
 	for opcion != 0 {
-		fmt.Println("\n1.Agregar porducto 2.Precio 3.Cantidad 4.Buscar 5.Eliminar 6.Listar 0.Salir")
-		fmt.Print("Opcion: ")
+		fmt.Println("\n--- INVENTARIO ---")
+		fmt.Println("1. Agregar producto")
+		fmt.Println("2. Buscar producto")
+		fmt.Println("3. Listar productos")
+		fmt.Println("4. Actualizar precio")
+		fmt.Println("5. Actualizar cantidad")
+		fmt.Println("6. Eliminar producto")
+		fmt.Println("0. Salir")
+		fmt.Print("Seleccione una opción: ")
 		fmt.Scan(&opcion)
 
 		switch opcion {
 		case 1:
-			fmt.Print("ID, nombre, precio y cantidad: ")
-			fmt.Scan(&id, &nombre, &precio, &cantidad)
+			var id, cantidad int
+			var nombre string
+			var precio float64
 
-			if _, existe := inventario.BuscarProducto(id); existe {
-				fmt.Println("Ese ID ya existe.")
-			} else {
-				inventario.AgregarProducto(NuevoProducto(id, nombre, precio, cantidad))
-				fmt.Println("Producto agregado.")
-			}
-
-		case 2, 3:
-			fmt.Print("ID del producto: ")
+			fmt.Print("ID: ")
 			fmt.Scan(&id)
-			p, existe := inventario.BuscarProducto(id)
+			fmt.Print("Nombre: ")
+			fmt.Scan(&nombre)
+			fmt.Print("Precio: ")
+			fmt.Scan(&precio)
+			fmt.Print("Cantidad: ")
+			fmt.Scan(&cantidad)
 
-			if existe {
-				if opcion == 2 {
-					fmt.Print("Nuevo precio: ")
-					fmt.Scan(&precio)
-					p.ActualizarPrecio(precio)
-				} else {
-					fmt.Print("Nueva cantidad: ")
-					fmt.Scan(&cantidad)
-					p.ActualizarCantidad(cantidad)
-				}
-				inventario.AgregarProducto(p)
-				fmt.Println("Producto actualizado.")
-			} else {
-				fmt.Println("Producto no encontrado.")
-			}
+			p := NuevoProducto(id, nombre, precio, cantidad)
+			inventario.AgregarProducto(p)
+			fmt.Println("Producto agregado.")
 
-		case 4:
-			fmt.Print("ID del producto: ")
+		case 2:
+			var id int
+			fmt.Print("Ingrese el ID: ")
 			fmt.Scan(&id)
+
 			p, existe := inventario.BuscarProducto(id)
 			if existe {
 				p.MostrarInfo()
@@ -107,24 +102,62 @@ func main() {
 				fmt.Println("Producto no encontrado.")
 			}
 
-		case 5:
+		case 3:
+			inventario.ListarProductos()
+
+		case 4:
+			var id int
+			var precio float64
+
 			fmt.Print("ID del producto: ")
 			fmt.Scan(&id)
-			if _, existe := inventario.BuscarProducto(id); existe {
+
+			p, existe := inventario.BuscarProducto(id)
+			if existe {
+				fmt.Print("Nuevo precio: ")
+				fmt.Scan(&precio)
+				p.ActualizarPrecio(precio)
+				inventario.AgregarProducto(p)
+				fmt.Println("Precio actualizado.")
+			} else {
+				fmt.Println("Producto no encontrado.")
+			}
+
+		case 5:
+			var id, cantidad int
+
+			fmt.Print("ID del producto: ")
+			fmt.Scan(&id)
+
+			p, existe := inventario.BuscarProducto(id)
+			if existe {
+				fmt.Print("Nueva cantidad: ")
+				fmt.Scan(&cantidad)
+				p.ActualizarCantidad(cantidad)
+				inventario.AgregarProducto(p)
+				fmt.Println("Cantidad actualizada.")
+			} else {
+				fmt.Println("Producto no encontrado.")
+			}
+
+		case 6:
+			var id int
+			fmt.Print("ID del producto: ")
+			fmt.Scan(&id)
+
+			_, existe := inventario.BuscarProducto(id)
+			if existe {
 				inventario.EliminarProducto(id)
 				fmt.Println("Producto eliminado.")
 			} else {
 				fmt.Println("Producto no encontrado.")
 			}
 
-		case 6:
-			inventario.ListarProductos()
-
 		case 0:
-			fmt.Println("Fin del programa.")
+			fmt.Println("Saliendo del inventario.")
 
 		default:
-			fmt.Println("Opcion no valida.")
+			fmt.Println("Opción no válida.")
 		}
 	}
 }
