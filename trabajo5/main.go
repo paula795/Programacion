@@ -60,7 +60,7 @@ func main() {
 	opcion := -1
 
 	for opcion != 0 {
-		fmt.Println("\n--- INVENTARIO ---")
+		fmt.Println("\n--- INVENTARIO DE UNA TIENDA DE ROPA ---")
 		fmt.Println("1. Agregar producto")
 		fmt.Println("2. Buscar producto")
 		fmt.Println("3. Listar productos")
@@ -68,7 +68,7 @@ func main() {
 		fmt.Println("5. Actualizar cantidad")
 		fmt.Println("6. Eliminar producto")
 		fmt.Println("0. Salir")
-		fmt.Print("Seleccione una opción: ")
+		fmt.Print("Seleccione: ")
 		fmt.Scan(&opcion)
 
 		switch opcion {
@@ -88,7 +88,7 @@ func main() {
 
 			p := NuevoProducto(id, nombre, precio, cantidad)
 			inventario.AgregarProducto(p)
-			fmt.Println("Producto agregado.")
+			fmt.Println("Operación exitosa.")
 
 		case 2:
 			var id int
