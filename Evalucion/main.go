@@ -131,24 +131,3 @@ func (j Jarabe) MostrarDetalles() {
 	fmt.Println("Volumen:", j.volumen, "ml")
 	fmt.Println("Sabor:", j.sabor)
 }
-
-func main() {
-	tableta, valido1 := NuevaTableta("Paracetamol", "MK", "10/03/2026", 24, 500, false)
-
-	jarabe, valido2 := NuevoJarabe("Ambroxol", "Bago", "20/02/2026", 12, 120, "Fresa")
-
-	if !valido1 || !valido2 {
-		fmt.Println("Error al crear los medicamentos")
-		return
-	}
-
-	fmt.Println("===== DATOS DE LA TABLETA =====")
-	tableta.MostrarDetalles()
-
-	fmt.Println("\n===== DATOS DEL JARABE =====")
-	jarabe.MostrarDetalles()
-
-	fmt.Println("\n===== FECHAS DE CADUCIDAD =====")
-	fmt.Println(tableta.ObtenerNombre(), "caduca el:", tableta.CalcularCaducidad().Format("02/01/2006"))
-	fmt.Println(jarabe.ObtenerNombre(), "caduca el:", jarabe.CalcularCaducidad().Format("02/01/2006"))
-}
