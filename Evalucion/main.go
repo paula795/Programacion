@@ -121,13 +121,3 @@ func (t Tableta) MostrarDetalles() {
 	fmt.Println("Dosis:", t.dosisPorTableta, "mg")
 	fmt.Println("Requiere receta:", t.requiereReceta)
 }
-
-func (j Jarabe) MostrarDetalles() {
-	fmt.Println("Tipo: Jarabe")
-	fmt.Println("Nombre:", j.ObtenerNombre())
-	fmt.Println("Fabricante:", j.ObtenerFabricante())
-	fmt.Println("Fecha de fabricacion:", j.ObtenerFechaFabricacion().Format("02/01/2006"))
-	fmt.Println("Vida util:", j.ObtenerVidaUtil(), "meses")
-	fmt.Println("Volumen:", j.volumen, "ml")
-	fmt.Println("Sabor:", j.sabor)
-}
